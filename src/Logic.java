@@ -99,8 +99,8 @@ public class Logic {
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
 			}
-			// AudioClip clip = Applet.newAudioClip(url);
-			// clip.play();
+			 AudioClip clip = Applet.newAudioClip(url);
+			 clip.play();
 
 			try {
 				Thread.sleep(1);
