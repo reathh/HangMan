@@ -28,7 +28,7 @@ public class UI extends JPanel {
 		
 		frame.getContentPane().add(panel);
 		
-//Tedi rulz
+
 		Logic.InitGame();
 
 	}
