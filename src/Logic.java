@@ -198,3 +198,5 @@ public class Logic {
 		return word.text();
 	}
 }
+
+//Specialno za ivo
