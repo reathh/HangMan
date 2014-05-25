@@ -3,7 +3,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -16,8 +20,8 @@ import javax.swing.SwingConstants;
 public class Home extends JPanel implements ActionListener {
 	public JMenuItem restart, easy, medium, hard, bulgarian, english, fileExit;
 	public static JLabel guessWord;
-
-	public Home() {
+	public static JLabel picLabel;
+	public Home() throws IOException {
 
 		// Label containing the guess word
 		guessWord = new JLabel("guessWord");
@@ -78,6 +82,13 @@ public class Home extends JPanel implements ActionListener {
 
 		UI.panel.setLayout(new BorderLayout());
 		UI.panel.add(menubar, BorderLayout.NORTH);
+		
+		
+		
+		BufferedImage myPicture = ImageIO.read(new File("blank.png"));
+
+		picLabel = new JLabel(new ImageIcon(myPicture));
+		UI.panel.add(picLabel, BorderLayout.EAST);
 	}
 
 	public void actionPerformed(ActionEvent e) {

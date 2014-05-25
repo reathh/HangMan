@@ -142,13 +142,15 @@ public class Logic {
 	// Paint some stuff
 	public static void Paint(JLabel JguessWord) throws IOException {
 		BufferedImage myPicture = null;
+	
 		if (mistakes != 0) {
 			myPicture = ImageIO.read(new File(images[mistakes - 1]));
+			Home.picLabel = new JLabel(new ImageIcon(myPicture));
+			UI.panel.add(Home.picLabel, BorderLayout.EAST);
 		} else {
-			myPicture = ImageIO.read(new File("blank.png"));
+			UI.panel.remove(Home.picLabel);
 		}
-		JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-		UI.panel.add(picLabel, BorderLayout.EAST);
+		
 
 		JguessWord.setText(new String(guessWord));
 		UI.panel.revalidate();

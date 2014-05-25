@@ -1,4 +1,5 @@
 import java.awt.Toolkit;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,7 +14,7 @@ public class UI extends JPanel {
 
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 	
 		new Home();
 		panel.add(new ENKeyboard());
