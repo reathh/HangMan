@@ -20,7 +20,6 @@ import javax.swing.SwingConstants;
 public class Home extends JPanel implements ActionListener {
 	public JMenuItem restart, easy, medium, hard, bulgarian, english, fileExit;
 	public static JLabel guessWord;
-	public static JLabel picLabel;
 	public Home() throws IOException {
 
 		// Label containing the guess word
@@ -82,19 +81,19 @@ public class Home extends JPanel implements ActionListener {
 
 		UI.panel.setLayout(new BorderLayout());
 		UI.panel.add(menubar, BorderLayout.NORTH);
-		
-		
-		
-		BufferedImage myPicture = ImageIO.read(new File("blank.png"));
 
-		picLabel = new JLabel(new ImageIcon(myPicture));
-		UI.panel.add(picLabel, BorderLayout.EAST);
+		
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if (source == restart) {
-
+			
+			for (JLabel picLabel : Logic.picLabels) {
+				UI.panel.remove(picLabel);
+			}
+			
 			Logic.InitGame();
 			for (int i = 0; i < ENKeyboard.keyboard.length; i++) {
 				ENKeyboard.keyboard[i].setEnabled(true);

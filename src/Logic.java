@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -31,10 +32,11 @@ public class Logic {
 	static char[] dots;
 	static StringBuffer guessWord;
 	static byte MAX_MISTAKES = 13;
-	static byte mistakes;
+	static byte mistakes = 0;
 	static boolean endIt = false;
 	static int minletters = 5;
 	static int maxletters = 13;
+	static ArrayList<JLabel> picLabels = new ArrayList<JLabel>();
 
 	// Start a new game
 	public static void InitGame() {
@@ -141,16 +143,15 @@ public class Logic {
 
 	// Paint some stuff
 	public static void Paint(JLabel JguessWord) throws IOException {
-		BufferedImage myPicture = null;
 	
 		if (mistakes != 0) {
-			myPicture = ImageIO.read(new File(images[mistakes - 1]));
-			Home.picLabel = new JLabel(new ImageIcon(myPicture));
-			UI.panel.add(Home.picLabel, BorderLayout.EAST);
-		} else {
-			UI.panel.remove(Home.picLabel);
-		}
-		
+			BufferedImage myPicture = ImageIO.read(new File(images[mistakes - 1]));
+		 	JLabel picLabel = new JLabel(new ImageIcon(myPicture)); 
+			 picLabels.add(picLabel);
+			UI.panel.add(picLabel, BorderLayout.EAST);	
+		}  
+
+
 
 		JguessWord.setText(new String(guessWord));
 		UI.panel.revalidate();
