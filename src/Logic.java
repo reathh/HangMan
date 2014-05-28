@@ -191,7 +191,7 @@ public class Logic {
 			Document doc = Jsoup
 					.connect("http://rechnik.chitanka.info/random?").get();
 			word = doc.getElementById("first-heading");
-//I love radko
+
 		} while (word.text().indexOf(" ") != -1
 				&& word.text().length() <= minletters
 				&& word.text().length() >= maxletters);
